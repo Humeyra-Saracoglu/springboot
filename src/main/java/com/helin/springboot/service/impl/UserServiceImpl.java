@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -27,24 +26,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User readUser(Long id){
         return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Bu id ile eşleşen Kullanıcı bulunamadı." + id));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Override
     @Transactional
-    public User updateUser(Long id, User updated) {
+    public User updateUser(Long id, User userUpdated) {
         User user = readUser(id);
-        if (updated.getUsername().equals(user.getUsername())  && userRepository.existsByUsername(updated.getUsername())) {
+        if (userUpdated.getUsername().equals(user.getUsername())  && userRepository.existsByUsername(userUpdated.getUsername())) {
             throw new IllegalArgumentException("Kullanıcı adı zaten kayıtlı");
         }
-        return userRepository.save(updated);
+        return userRepository.save(userUpdated);
     }
 
     @Override
