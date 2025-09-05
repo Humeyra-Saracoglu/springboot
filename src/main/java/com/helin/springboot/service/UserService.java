@@ -1,13 +1,16 @@
 package com.helin.springboot.service;
 
+import com.helin.springboot.dto.request.UserRequest;
+import com.helin.springboot.dto.response.UserResponse;
 import com.helin.springboot.entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    User createUser(User user);
-    User readUser(Long id);
-    User updateUser(Long id, User user);
+
+    UserResponse createUser(UserRequest request);
+    UserResponse readUser(Long id);
+    List<UserResponse> findAll();
+    UserResponse updateUser(Long id, UserRequest request);
     void deleteUser(Long id);
-    List<User> findAll();
 }

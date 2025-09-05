@@ -1,9 +1,11 @@
 package com.helin.springboot.controller;
 
-import com.helin.springboot.entity.User;
+import com.helin.springboot.dto.request.UserRequest;
+import com.helin.springboot.dto.response.UserResponse;
 import com.helin.springboot.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,23 +19,23 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User user) {
-        return userService.createUser(user);
+    public UserResponse create(@RequestBody UserRequest request) {
+        return userService.createUser(request);
     }
 
     @GetMapping
-    public List<User> findAll() {
+    public List<UserResponse> findAll() {
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
-    public User read(@PathVariable Long id) {
+    public UserResponse read(@PathVariable Long id) {
         return userService.readUser(id);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        return userService.updateUser(id, user);
+    public UserResponse updateUser(@PathVariable Long id, @RequestBody UserRequest request) {
+        return userService.updateUser(id, request);
     }
 
     @DeleteMapping("/{id}")
