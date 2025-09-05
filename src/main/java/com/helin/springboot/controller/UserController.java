@@ -4,7 +4,6 @@ import com.helin.springboot.entity.User;
 import com.helin.springboot.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User create(@Validated @RequestBody User user) {
+    public User create(@RequestBody User user) {
         return userService.createUser(user);
     }
 
@@ -32,8 +31,8 @@ public class UserController {
         return userService.readUser(id);
     }
 
-    @PutMapping
-    public User updateUser(@PathVariable Long id, @Validated @RequestBody User user) {
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
         return userService.updateUser(id, user);
     }
 
