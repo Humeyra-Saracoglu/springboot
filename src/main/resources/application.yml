@@ -19,11 +19,6 @@ spring:
       hibernate:
         format_sql: true
 
-
-spring:
-  profiles:
-    active: dev
-
 logging:
   level:
     root: INFO

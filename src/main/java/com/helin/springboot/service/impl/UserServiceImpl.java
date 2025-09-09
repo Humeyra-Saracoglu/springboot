@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
         User u = userRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("readUser() not found id={}", id);
-                    return new IllegalArgumentException("Bu id ile eşleşen Kullanıcı bulunamadı: " + id));
-                }
+                    return new IllegalArgumentException("Bu id ile eşleşen Kullanıcı bulunamadı: " + id);
+                });
         return modelMapper.map(u, UserResponse.class);
     }
 
