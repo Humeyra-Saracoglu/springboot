@@ -19,7 +19,13 @@ spring:
       hibernate:
         format_sql: true
 
+
+spring:
+  profiles:
+    active: dev
+
 logging:
   level:
-    org.hibernate.SQL: debug
-    org.hibernate.orm.jdbc.bind: trace
+    root: INFO
+    com.helin.springboot: DEBUG
+    org.hibernate.SQL: WARN
