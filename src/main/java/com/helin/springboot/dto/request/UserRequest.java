@@ -25,6 +25,6 @@ public class UserRequest {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "^\\+?[1-9]\\d{7,14}$", message = "Telefon numaranız + ile ve 8-15 hane olmalıdır. (örn: +905551112233) arasında boşluk bırakmayınız.")
+    @Pattern(regexp = "^\\+?[1-9]\\d{12}$", message = "Telefon numaranız + ile ve 12 hane olmalıdır. (örn: +905551112233) arasında boşluk bırakmayınız.")
     private String phone;
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -31,11 +32,7 @@ public class User {
     private String phone;
 
     @Column(nullable = false, updatable = false)
+    @CreationTimestamp
     private LocalDateTime createTime;
-
-    @PrePersist
-    void prePersist() {
-        if (createTime == null) createTime = LocalDateTime.now();
-    }
 
 }
