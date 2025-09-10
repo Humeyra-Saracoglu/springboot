@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/demo")
+@RequestMapping("/api/v2/demo")
 public class DemoController {
 
     // 404
