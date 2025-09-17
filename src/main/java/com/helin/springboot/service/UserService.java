@@ -2,7 +2,6 @@ package com.helin.springboot.service;
 
 import com.helin.springboot.dto.request.UserRequest;
 import com.helin.springboot.dto.response.UserResponse;
-import com.helin.springboot.entity.User;
 
 import java.util.List;
 

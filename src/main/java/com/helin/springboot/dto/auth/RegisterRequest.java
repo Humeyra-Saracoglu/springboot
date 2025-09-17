@@ -15,4 +15,8 @@ public class RegisterRequest {
 
     @NotEmpty(message = "Şifre boş olmaz")
     private String password;
+
+    private String email;
+
+    private String phone;
 }

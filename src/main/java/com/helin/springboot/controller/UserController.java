@@ -4,7 +4,9 @@ import com.helin.springboot.dto.auth.RegisterRequest;
 import com.helin.springboot.dto.auth.RegisterResponse;
 import com.helin.springboot.dto.request.UserRequest;
 import com.helin.springboot.dto.response.UserResponse;
+import com.helin.springboot.service.AuthService;
 import com.helin.springboot.service.UserService;
+import com.helin.springboot.service.impl.AuthServiceImpl;
 import com.helin.springboot.service.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ public class UserController {
 
     private final UserServiceImpl userServiceImpl;
     private final UserService userService;
+    private final AuthServiceImpl authServiceImpl;
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping("/create")
@@ -35,15 +38,9 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@Valid @RequestBody RegisterRequest request) {
-        RegisterResponse response = authService.register(request);
+        RegisterResponse response = authServiceImpl.register(request);
         return new  ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
-    @PostMapping
-    public Page<UserResponse> getAllUsers(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size)
-    )
 
     @GetMapping
     public List<UserResponse> findAll() {
